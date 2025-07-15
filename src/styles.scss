@@ -1,3 +1,11 @@
+@use '@angular/material' as mat;
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+}
 /* 1. Современный Reset */
 *,
 *::before,
@@ -25,3 +33,5 @@ body {
   background-color: #f9f9f9;
   color: #333;
 }
+
+

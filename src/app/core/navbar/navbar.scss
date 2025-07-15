@@ -1,0 +1,52 @@
+.custom-toolbar {
+  height: 80px; // например, делаем ниже
+    min-height: 40px; // важно для перезаписи дефолтного min-height
+    padding: 0 16px;
+
+  .mat-toolbar-row {
+    height: 40px;
+    min-height: 40px;
+  }
+}
+
+.main-nav {
+
+}
+
+a.custom-link {
+  text-decoration: none;
+  color: whitesmoke; /* или например #333 */
+}
+
+a.custom-link:hover {
+  color: gray !important;
+}
+
+.example-icon {
+  padding-right: 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.spacer {
+  width: 10px;
+}
+
+.main-nav-text {
+  font-size: 1rem;
+  padding: 5px;
+}
+
+/* Более узкий и более прозрачный mat-menu */
+.mat-menu-panel.custom-menu {
+  width: 160px; /* желаемая ширина */
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Полупрозрачные фон при наведении */
+.mat-menu-panel.custom-menu
+.mat-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}

@@ -1,0 +1,23 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-toolbar-row>
+    <div class="header-nav">
+      <span><a href="#" class="custom-link">Recipe Book</a></span>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Second Line</a></span>
+    <div class="spacer"></div>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Auth</a></span>
+    <div class="spacer"></div>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Shopping List</a></span>
+    <span class="example-spacer"></span>
+    <button matButton [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu" class="custom-menu">
+      <button mat-menu-item>Save Data</button>
+      <button mat-menu-item>Fetch Data</button>
+    </mat-menu>
+  </mat-toolbar-row>
+
+
+</mat-toolbar>
