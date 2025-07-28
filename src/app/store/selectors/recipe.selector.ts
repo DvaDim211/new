@@ -8,3 +8,9 @@ export const getRecipes = createSelector(
   getRecipeFeature,
   (recipes: Recipe[]) => recipes
 );
+
+export const getRecipeById = (id: number | string) =>
+  createSelector(
+    getRecipeFeature,
+    (recipes: Recipe[]) => recipes.find((recipe) => recipe.id === String(id))
+  )
