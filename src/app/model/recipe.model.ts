@@ -4,8 +4,9 @@ export interface Ingredient {
 }
 
 export interface Recipe {
-  name?: string;
-  description?: string;
-  imagePath?: string;
-  ingredients?: Ingredient[]
+  id: number | string,
+  name: string;
+  description: string;
+  imagePath: string;
+  ingredients: Ingredient[]
 }

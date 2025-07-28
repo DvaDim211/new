@@ -1,37 +1,30 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
+@use "./theme/custom-theme" as custom;
 
+@include mat.core();
 :root {
+  @include mat.theme(custom.$light-theme);
+  @include mat.color-variants-backwards-compatibility(custom.$light-theme);
+  @include mat.all-component-themes(custom.$light-theme);
   @include mat.toolbar-overrides((
     container-background-color: var(--mat-sys-primary-container),
-    container-text-color: var(--mat-sys-primary),
+    container-text-color: var(--mat-sys-on-primary),
   ));
 }
-/* 1. Современный Reset */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
-html {
-  /* 2. Базовые настройки шрифта */
-  font-family: sans-serif;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+.dark-theme {
+  @include mat.theme(custom.$dark-theme);
+  @include mat.color-variants-backwards-compatibility(custom.$dark-theme);
+  @include mat.all-component-themes(custom.$dark-theme);
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-on-primary),
+  ));
 }
 
 body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 
-  /* 3. Приятное начальное оформление */
-  font-weight: 600; /* semi-bold */
-  font-size: 1rem; /* 16px */
-  background-color: #f9f9f9;
-  color: #333;
+  --mat-sys-background: #ffffff;
+
+
 }
-
-

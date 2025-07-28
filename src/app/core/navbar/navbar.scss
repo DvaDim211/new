@@ -1,6 +1,7 @@
 .custom-toolbar {
-  height: 80px; // например, делаем ниже
-    min-height: 40px; // важно для перезаписи дефолтного min-height
+  margin-bottom: 20px;
+  height: 80px;
+    min-height: 40px;
     padding: 0 16px;
 
   .mat-toolbar-row {
@@ -15,7 +16,7 @@
 
 a.custom-link {
   text-decoration: none;
-  color: whitesmoke; /* или например #333 */
+  color: whitesmoke;
 }
 
 a.custom-link:hover {

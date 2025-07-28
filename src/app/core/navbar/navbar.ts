@@ -12,4 +12,8 @@ import {RouterLink, RouterLinkActive} from '@angular/router';
 })
 export class Navbar {
 
+  onSwitchTheme() {
+    document.body.classList.toggle('dark-theme');
+  }
+
 }

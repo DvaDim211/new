@@ -7,10 +7,24 @@ import { map, Observable } from 'rxjs';
 export class RecipeService {
   private http = inject(HttpClient);
 
+  // getRecipes(url: string): Observable<Recipe[]> {
+  //   return this.http
+  //     .get<{ [key: string]: Recipe }>(`${url}/recipes.json`)
+  //     .pipe(map((resData) => Object.values(resData)));
+  // }
+
   getRecipes(url: string): Observable<Recipe[]> {
-    return this.http
-      .get<{ [key: string]: Recipe }>(`${url}/recipes.json`)
-      .pipe(map((resData) => Object.values(resData)));
+    return this.http.get<{ [key: string]: Recipe }>(`${url}/recipes.json`).pipe(
+      map((resData) => {
+        const recipesArray: Recipe[] = [];
+        for (const key in resData) {
+          if (resData.hasOwnProperty(key)) {
+            recipesArray.push({ ...resData[key], id: key });
+          }
+        }
+        return recipesArray;
+      }),
+    );
   }
 
   addRecipe(url: string, recipe: Recipe): Observable<Recipe> {

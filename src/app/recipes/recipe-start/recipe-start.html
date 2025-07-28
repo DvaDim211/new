@@ -1,1 +1,48 @@
-<p>recipe-start works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <img
+      [src]="recipeItem.imagePath"
+      alt="{{ recipeItem.name }}"
+      class="img-responsive"
+      style="max-height: 300px">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1>{{ recipeItem.name }}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div
+      class="btn-group"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle"
+      >Manage {{ recipeItem.name }} <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a (click)="addToSL()" style="cursor: pointer">To Shopping List</a></li>
+        <li><a (click)="onEditRecipe()" style="cursor: pointer">Edit recipe</a></li>
+        <li><a (click)="deleteRecipe()" style="cursor: pointer">Delete recipe</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    {{ recipeItem.description }}
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let ingredient of recipeItem.ingredients">
+        {{ ingredient.name }} - {{ ingredient.amount }}
+      </li>
+    </ul>
+  </div>
+</div>

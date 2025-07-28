@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+@use './_theme-colors' as theme-colors;
+
+
+$my-typography: (
+  plain-family: 'Roboto, "Helvetica Neue", sans-serif',
+  brand-family: 'Roboto',
+  bold-weight: 700,
+  medium-weight: 500,
+  regular-weight: 400,
+  use-system-variables: true,
+);
+
+$light-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: theme-colors.$primary-palette,
+    tertiary: theme-colors.$tertiary-palette,
+  ),
+  typography: $my-typography,
+  density: (
+    scale: 0,
+  ),
+));
+
+$dark-theme: mat.define-theme((
+  color: (
+    theme-type: dark,
+    primary: theme-colors.$primary-palette,
+    tertiary: theme-colors.$tertiary-palette,
+  ),
+  typography: $my-typography,
+  density: (
+    scale: 0,
+  ),
+));
+
+

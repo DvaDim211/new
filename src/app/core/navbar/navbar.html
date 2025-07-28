@@ -6,7 +6,7 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Second Line</a></span>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Recipes</a></span>
     <div class="spacer"></div>
     <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Auth</a></span>
     <div class="spacer"></div>
@@ -14,6 +14,7 @@
     <span class="example-spacer"></span>
     <button matButton [matMenuTriggerFor]="menu">Menu</button>
     <mat-menu #menu="matMenu" class="custom-menu">
+      <button mat-menu-item (click)="onSwitchTheme()">Switch theme</button>
       <button mat-menu-item>Save Data</button>
       <button mat-menu-item>Fetch Data</button>
     </mat-menu>
