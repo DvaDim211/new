@@ -17,7 +17,18 @@
 <div class="row">
   <div class="col-xs-12">
     <div>
-      <button matButton [matMenuTriggerFor]="menu">Menu</button>
+      <button
+        style="cursor: pointer"
+        matButton
+        [matMenuTriggerFor]="menu"
+        #menuTrigger="matMenuTrigger"
+        aria-haspopup="true"
+        [attr.aria-expanded]="menuTrigger.menuOpen ? 'true' : 'false' "
+      >Manage {{recipe?.name}}
+        <span class="arrow" [class.open]="menuTrigger.menuOpen">
+        {{ menuTrigger.menuOpen ? '▼' : '►' }}
+      </span>
+      </button>
       <mat-menu #menu="matMenu" class="custom-menu">
         <button mat-menu-item (click)="addToSL()">To Shopping List</button>
         <button mat-menu-item (click)="onEditRecipe()">Edit Recipe</button>
@@ -31,14 +42,14 @@
     {{ recipe?.description }}
   </div>
 </div>
-<!--@for (ingredient of recipe?.ingredients; track recipe.ingredients.name;) {-->
-<!--  <div class="row">-->
-<!--    <div class="col-xs-12">-->
-<!--      <ul class="list-group">-->
-<!--        <li class="list-group-item">-->
-<!--          {{ ingredient.name }} - {{ ingredient.amount }}-->
-<!--        </li>-->
-<!--      </ul>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--}-->
+@for (ingredient of recipe?.ingredients; track ingredient.name;) {
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+          {{ ingredient.name }} - {{ ingredient.amount }}
+        </li>
+      </ul>
+    </div>
+  </div>
+}

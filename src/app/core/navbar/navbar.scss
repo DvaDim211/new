@@ -14,12 +14,14 @@
 
 }
 
-a.custom-link {
+a.custom-link,
+button.custom-link {
   text-decoration: none;
   color: whitesmoke;
 }
 
-a.custom-link:hover {
+a.custom-link:hover,
+button.custom-link:hover {
   color: gray !important;
 }
 
@@ -43,11 +45,19 @@ a.custom-link:hover {
 /* Более узкий и более прозрачный mat-menu */
 .mat-menu-panel.custom-menu {
   width: 160px; /* желаемая ширина */
-  background-color: rgba(0, 0, 0, 0.6) !important;
+  color: whitesmoke !important;
 }
 
 /* Полупрозрачные фон при наведении */
 .mat-menu-panel.custom-menu
 .mat-menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: gray !important;
+}
+
+.arrow {
+  margin-left: 6px;
+  font-size: 0.7em;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  user-select: none;
 }

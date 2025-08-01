@@ -1,12 +1,19 @@
-<a [routerLink]="[recipeItem().id]" style="text-decoration: "></a>
-<mat-card class="example-card" appearance="outlined">
+<mat-card
+  [routerLink]="[recipeItem().id]"
+  [ngClass]="{
+  'highlighted': activatedRecipeId() === recipeItem().id
+  }"
+  class="example-card"
+  appearance="outlined"
+  style="cursor: pointer"
+  >
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{ recipeItem().name }}</mat-card-title>
       <img mat-card-lg-image [src]="recipeItem().imagePath" >
     </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-    {{recipeItem().description}}
-  </mat-card-content>
+  </mat-card-header><mat-card-content>
+  {{recipeItem().description}}
+</mat-card-content>
 </mat-card>
+

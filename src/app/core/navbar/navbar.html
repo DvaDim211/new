@@ -6,13 +6,24 @@
   </mat-toolbar-row>
 
   <mat-toolbar-row>
-    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Recipes</a></span>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="recipes" class="custom-link">Recipes</a></span>
     <div class="spacer"></div>
-    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Auth</a></span>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="auth" class="custom-link">Auth</a></span>
     <div class="spacer"></div>
-    <span class="main-nav-text" routerLinkActive="active"><a routerLink="#" class="custom-link">Shopping List</a></span>
+    <span class="main-nav-text" routerLinkActive="active"><a routerLink="shopping-list" class="custom-link">Shopping List</a></span>
     <span class="example-spacer"></span>
-    <button matButton [matMenuTriggerFor]="menu">Menu</button>
+    <button
+      matButton
+      [matMenuTriggerFor]="menu"
+      class="custom-link"
+      #menuTrigger="matMenuTrigger"
+      aria-haspopup="true"
+      [attr.aria-expanded]="menuTrigger.menuOpen ? 'true' : 'false' "
+      >Manage
+      <span class="arrow" [class.open]="menuTrigger.menuOpen">
+        {{ menuTrigger.menuOpen ? '▼' : '►' }}
+      </span>
+    </button>
     <mat-menu #menu="matMenu" class="custom-menu">
       <button mat-menu-item (click)="onSwitchTheme()">Switch theme</button>
       <button mat-menu-item>Save Data</button>

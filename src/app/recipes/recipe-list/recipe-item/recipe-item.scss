@@ -1,4 +1,11 @@
 .example-card {
-  max-width: 400px;
+  max-width: 100vw;
   margin-bottom: 8px;
 }
+
+.highlighted{
+  border: 0.5px solid #909090;
+  background-color: rgba(174, 174, 174, 0.29) !important;
+}
+
+

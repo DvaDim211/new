@@ -33,14 +33,13 @@ export class RecipeList implements OnInit, OnDestroy {
 
 
   onNewRecipe() {
-    console.log(this.recipes);
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
 
 
   ngOnDestroy() {
-
+    this.recipeSub$.unsubscribe();
   }
 
 }
