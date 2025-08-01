@@ -1,6 +1,6 @@
-import {Component, inject, input, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, DestroyRef, inject, input, OnInit, signal} from '@angular/core';
 import {Recipe} from '../../../model/recipe.model';
-import {ActivatedRoute, NavigationEnd, Router, RouterLink} from '@angular/router';
+import {NavigationEnd, Router, RouterLink} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import {NgClass} from '@angular/common';
 import {filter, Subscription} from 'rxjs';
@@ -15,15 +15,16 @@ import {filter, Subscription} from 'rxjs';
   templateUrl: './recipe-item.html',
   styleUrl: './recipe-item.scss'
 })
-export class RecipeItem implements OnInit, OnDestroy {
+export class RecipeItem implements OnInit {
   private router = inject(Router);
+  private destroyRef = inject(DestroyRef)
   recipeItem = input.required<Recipe>();
   index = input.required<number>();
   activatedRecipeId = signal<string | number | null >(null);
-
+  subscription = new Subscription();
 
   ngOnInit() {
-    this.router.events
+    const sub = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(event => {
         const url = this.router.url;
@@ -31,10 +32,9 @@ export class RecipeItem implements OnInit, OnDestroy {
         const id = match?.[1] ?? null;
         this.activatedRecipeId.set(id);
       })
+    this.subscription.add(sub);
+    this.destroyRef.onDestroy(() => this.subscription.unsubscribe());
   }
 
-  ngOnDestroy() {
-
-  }
 
 }
