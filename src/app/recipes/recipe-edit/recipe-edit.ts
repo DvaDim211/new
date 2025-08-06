@@ -1,11 +1,22 @@
 import {Component, inject, OnDestroy, OnInit, signal} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-recipe-edit',
-  imports: [],
+  imports: [
+    MatButton,
+    MatFormFieldModule,
+    MatInput,
+    MatIcon,
+    MatIconButton,
+    ReactiveFormsModule,
+  ],
   templateUrl: './recipe-edit.html',
   styleUrl: './recipe-edit.scss'
 })
@@ -13,6 +24,7 @@ export class RecipeEdit implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private store = inject(Store);
+  private fb = inject(FormBuilder);
 
   editMode = signal<boolean>(false);
   recipeForm!: FormGroup;
@@ -20,18 +32,44 @@ export class RecipeEdit implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.editMode.set(!!data['editMode']);
+      console.log(this.editMode());
     });
 
-    if(this.editMode()) {
-
-    } else {
-
-    }
   }
 
-  ngOnDestroy() {
 
+  private initForm(): void {
+    this.recipeForm = this.fb.group({
+      name: ['', Validators.required],
+      imagePath: ['', Validators.required],
+      description: ['', Validators.required],
+      ingredients: this.fb.array([]),
+    });
   }
+
+
+  get imagePath(): FormControl {
+    return this.recipeForm.get('imagePath') as FormControl;
+  }
+
+  get ingredients(): FormArray {
+    return this.recipeForm.get('ingredients') as FormArray;
+  }
+
+
+
+  onAddIngredient(): void {
+    this.ingredients.push(
+      this.fb.group({
+        name: ['', Validators.required],
+        amount: [1, [Validators.required, Validators.min(1)]],
+      })
+    );
+  }
+
+
+
+
 
   getControls() {
     // return (<FormArray>this.recipeForm.get('ingredients')).controls;
@@ -42,18 +80,15 @@ export class RecipeEdit implements OnInit, OnDestroy {
   }
 
   onDeleteIngredient(index: number) {
-    // (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+
   }
 
   onSubmit() {
-    // if (this.editMode) {
-    //   this.recipeService.updateRecipe(this.id, this.recipeForm.value);
-    //   this.cancelAction();
-    // } else {
-    //   this.recipeService.addRecipe(this.recipeForm.value);
-    //   this.cancelAction();
-    // }
+
   };
 
+  ngOnDestroy() {
+
+  }
 
 }

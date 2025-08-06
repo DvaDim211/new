@@ -5,6 +5,7 @@ import {RecipeEdit} from './recipes/recipe-edit/recipe-edit';
 import {RecipeDetail} from './recipes/recipe-detail/recipe-detail';
 import {ShoppingList} from './shopping-list/shopping-list';
 import {Auth} from './auth/auth';
+import {RecipesResolver} from './services/recipes-resolver';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
@@ -24,7 +25,7 @@ export const routes: Routes = [
         path: ':id/edit',
         component: RecipeEdit,
         data: { editMode: true },
-        // resolve: [RecipesResolverService],
+        resolve: { recipes: RecipesResolver},
       },
     ],
   },

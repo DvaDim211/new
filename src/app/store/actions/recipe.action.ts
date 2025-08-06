@@ -14,16 +14,16 @@ export const loadRecipesFailure = createAction(
 );
 
 export const addRecipe = createAction(
-  '[Recipe] Add Recipe',
+  '[Recipe] Add RecipeService',
   props<{ recipe: Recipe }>()
 );
 
 export const addRecipeSuccess = createAction(
-  '[Recipe] Add Recipe Success',
+  '[Recipe] Add RecipeService Success',
   props<{ recipe: Recipe }>()
 );
 
 export const addRecipeFailure = createAction(
-  '[Recipe] Add Recipe Failure',
+  '[Recipe] Add RecipeService Failure',
   props<{ error: any }>()
 );

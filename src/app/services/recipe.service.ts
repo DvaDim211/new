@@ -1,17 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Recipe } from '../model/recipe.model';
+
 import { map, Observable } from 'rxjs';
+import {Recipe} from '../model/recipe.model';
 
 @Injectable({ providedIn: 'root' })
 export class RecipeService {
   private http = inject(HttpClient);
-
-  // getRecipes(url: string): Observable<Recipe[]> {
-  //   return this.http
-  //     .get<{ [key: string]: Recipe }>(`${url}/recipes.json`)
-  //     .pipe(map((resData) => Object.values(resData)));
-  // }
+  
 
   getRecipes(url: string): Observable<Recipe[]> {
     return this.http.get<{ [key: string]: Recipe }>(`${url}/recipes.json`).pipe(

@@ -1,0 +1,27 @@
+.full-width {
+  width: 100%;
+}
+
+.form-header {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.preview-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin: 10px 0;
+}
+
+.ingredient-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ingredient-input {
+  flex: 1;
+}

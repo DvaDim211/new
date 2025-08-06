@@ -1,6 +1,7 @@
 .example-card {
   max-width: 100vw;
   margin-bottom: 8px;
+  //max-height: 125px;
 }
 
 .highlighted{
@@ -8,4 +9,40 @@
   background-color: rgba(174, 174, 174, 0.29) !important;
 }
 
+.card-grid {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  align-items: center;
+  gap: 1rem;
+}
 
+.card-text {
+  padding: 8px 0 0 8px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  word-wrap: break-word;
+  min-width: 0;
+}
+
+.card-text mat-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+.card-img {
+  align-self: center;
+  width: 140px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.card-img img {
+  width: 140px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 4px;
+}

@@ -28,7 +28,12 @@ export class RecipeList implements OnInit, OnDestroy {
     this.store.dispatch(loadRecipes());
     this.recipeSub$ = this.store.select(getRecipes).subscribe(recipes => {
       this.recipes = recipes;
+      console.log('recipes from store:', recipes);
     })
+    // this.recipeSub$ = this.store.select(getRecipes).subscribe((recipes) => {
+    //   this.recipes = recipes;
+    //   console.log(recipes, 'recipelist got');
+    // })
   }
 
 

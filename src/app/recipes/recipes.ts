@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {RecipeList} from './recipe-list/recipe-list';
 
@@ -12,5 +12,8 @@ import {RecipeList} from './recipe-list/recipe-list';
   styleUrl: './recipes.scss'
 })
 export class Recipes {
+
+
+
 
 }

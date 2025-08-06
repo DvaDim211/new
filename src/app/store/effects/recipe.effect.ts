@@ -8,7 +8,7 @@ import {
   loadRecipesFailure,
   loadRecipesSuccess,
 } from '../actions/recipe.action';
-import { catchError, exhaustMap, map, of, tap } from 'rxjs';
+import { catchError, exhaustMap, map, of } from 'rxjs';
 import { RecipeService } from '../../services/recipe.service';
 
 @Injectable()
