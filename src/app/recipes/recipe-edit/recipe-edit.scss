@@ -1,27 +1,38 @@
-.full-width {
-  width: 100%;
-}
-
-.form-header {
+.container {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  border: blue solid 2px;
+  min-width: 0;
 }
 
-.preview-image {
-  width: 100%;
+.qqwwee {
+  border: #0f0d13 solid 2px;
+}
+
+.buttons {
+
+}
+
+.imgContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+
+}
+
+
+
+.recipeImg {
+  max-width: 100%;
   max-height: 300px;
   object-fit: cover;
-  margin: 10px 0;
 }
 
-.ingredient-row {
+.ingredients-line {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.ingredient-input {
-  flex: 1;
+  flex-direction: row;
 }

@@ -23,6 +23,7 @@
       #menuTrigger="matMenuTrigger"
       aria-haspopup="true"
       [attr.aria-expanded]="menuTrigger.menuOpen ? 'true' : 'false'"
+      (click)="logging()"
     >
       Manage {{ recipe?.name }}
       <span class="arrow" [class.open]="menuTrigger.menuOpen"

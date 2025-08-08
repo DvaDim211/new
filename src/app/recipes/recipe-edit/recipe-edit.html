@@ -1,159 +1,89 @@
-<!--<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="recipe-form">-->
-<!--  <div class="form-header">-->
-<!--    <button mat-raised-button color="primary" type="submit" [disabled]="!recipeForm.valid">Save</button>-->
-<!--    <button mat-raised-button color="warn" type="button" (click)="cancelAction()">Cancel</button>-->
-<!--  </div>-->
+<div class="container">
+  <form class="qqwwee" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <div class="buttons">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!recipeForm.valid"
+        type="submit">
+        Save
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="cancelAction()"
+        type="button">
+        Cancel
+      </button>
+    </div>
 
-<!--  <mat-form-field appearance="fill" class="full-width">-->
-<!--    <mat-label>Name</mat-label>-->
-<!--    <input matInput formControlName="recipeName">-->
-<!--  </mat-form-field>-->
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Recipe Name</mat-label>
+        <input formControlName="recipeName" matInput placeholder="Recipe Name">
+      </mat-form-field>
+    </div>
 
-<!--  <mat-form-field appearance="fill" class="full-width">-->
-<!--    <mat-label>Image URL</mat-label>-->
-<!--    <input matInput formControlName="recipeImagePath" >-->
-<!--  </mat-form-field>-->
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Image URl</mat-label>
+        <input formControlName="recipeImagePath" matInput placeholder="Image URL">
+      </mat-form-field>
+    </div>
 
-<!--  <img [src]="imagePath.value" class="preview-image">-->
+    <div class="imgContainer">
+      <img
+        class="recipeImg"
+        [src]="recipe()!.imagePath"
+      />
+    </div>
 
-<!--  <mat-form-field appearance="fill" class="full-width">-->
-<!--    <mat-label>Description</mat-label>-->
-<!--    <textarea matInput formControlName="recipeDescription" rows="4"></textarea>-->
-<!--  </mat-form-field>-->
+    <div>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="recipeDescription"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </div>
 
-<!--  <div formArrayName="ingredients">-->
-<!--    @for (recipeItem of getControls(); track recipeItem.id; let i = $index) {-->
-<!--      <div class="ingredient-row">-->
-<!--        <mat-form-field appearance="outline" class="ingredient-input">-->
-<!--          <mat-label>Name</mat-label>-->
-<!--          <input matInput formControlName="name">-->
-<!--        </mat-form-field>-->
-
-<!--        <mat-form-field appearance="outline" class="ingredient-input">-->
-<!--          <mat-label>Amount</mat-label>-->
-<!--          <input matInput type="number" formControlName="amount">-->
-<!--        </mat-form-field>-->
-
-<!--        <button mat-icon-button color="warn" type="button" (click)="onDeleteIngredient(i)">-->
-<!--          <mat-icon>delete</mat-icon>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--    }-->
-
-<!--      <button mat-stroked-button color="primary" type="button">&lt;!&ndash; (click)="onAddIngredient()"!&ndash;&gt;-->
-<!--        Add Ingredient-->
-<!--      </button>-->
-<!--  </div>-->
-<!--</form>-->
-<div class="row">
-  <div class="col-xs-12">
-    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-      <div class="row">
-        <div class="col-xs-12">
-          <button
-            [disabled]="!recipeForm.valid"
-            type="submit"
-            class="btn btn-success"
-          >
-            Save
-          </button>
-          <button (click)="cancelAction()" type="button" class="btn btn-danger">
-            Cancel
-          </button>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="name">Name</label>
+    <div formArrayName="recipeIngredients">
+      @for (ingredientCtrl of ingredientControls(); track i; let i = $index) {
+        <div class="ingredients-line" [formGroupName]="i" >
+          <div>
+            <input type="text" class="form-control" formControlName="name" />
+          </div>
+          <div>
             <input
-              type="text"
-              id="name"
+              type="number"
               class="form-control"
-              formControlName="recipeName"
+              formControlName="amount"
             />
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="imagePath">Image URL</label>
-            <input
-              type="text"
-              id="imagePath"
-              class="form-control"
-              formControlName="recipeImagePath"
-            />
+          <div>
+            <button
+              type="button"
+              (click)="onDeleteIngredient(i)"
+              class="btn btn-danger"
+            >
+              X
+            </button>
           </div>
         </div>
+      }
+      <hr />
+      <div>
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="onAddIngredient()"
+        >
+          Add ingredient
+        </button>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <img [src]="recipe()!.imagePath" class="img-responsive" />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="form-group">
-            <label for="imagePath">Description</label>
-            <textarea
-              type="text"
-              id="description"
-              class="form-control"
-              formControlName="recipeDescription"
-              rows="6"
-            ></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12" formArrayName="recipeIngredients">
-          @for (
-            ingredientCtrl of ingredientControls();
-            track i;
-            let i = $index
-          ) {
-            <div class="row" [formGroupName]="i" style="margin-top: 10px">
-              <div class="col-xs-8">
-                <input
-                  type="text"
-                  class="form-control"
-                  formControlName="name"
-                />
-              </div>
-              <div class="col-xs-2">
-                <input
-                  type="number"
-                  class="form-control"
-                  formControlName="amount"
-                />
-              </div>
-              <div class="col-xs-2">
-                <button
-                  type="button"
-                  (click)="onDeleteIngredient(i)"
-                  class="btn btn-danger"
-                >
-                  X
-                </button>
-              </div>
-            </div>
-          }
-          <hr />
-          <div class="row">
-            <div class="col-xs-12">
-              <button
-                type="button"
-                class="btn btn-success"
-                (click)="onAddIngredient()"
-              >
-                Add ingredient
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>

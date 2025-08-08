@@ -1,11 +1,8 @@
 <mat-card
-  [routerLink]="[recipeItem().id]"
-  [ngClass]="{
-  'highlighted': activatedRecipeId() === recipeItem().id
-  }"
+  [routerLink]="['/recipes', recipeItem().id]"
+  routerLinkActive="highlighted"
   class="example-card"
   appearance="outlined"
-  style="cursor: pointer"
   >
 
   <div class="card-grid">

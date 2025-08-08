@@ -14,10 +14,13 @@ import { Recipe } from '../../model/recipe.model';
 import { getRecipeById } from '../../store';
 import { take } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-recipe-edit',
-  imports: [MatFormFieldModule, ReactiveFormsModule],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatIconModule, MatInputModule, MatButton],
   templateUrl: './recipe-edit.html',
   styleUrl: './recipe-edit.scss',
 })

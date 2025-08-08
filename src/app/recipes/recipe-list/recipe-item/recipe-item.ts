@@ -1,8 +1,7 @@
 import {Component, DestroyRef, inject, input, OnInit, signal} from '@angular/core';
 import {Recipe} from '../../../model/recipe.model';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {NavigationEnd, Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
-import {NgClass} from '@angular/common';
 import {filter, Subscription} from 'rxjs';
 
 @Component({
@@ -10,7 +9,7 @@ import {filter, Subscription} from 'rxjs';
   imports: [
     RouterLink,
     MatCardModule,
-    NgClass,
+    RouterLinkActive,
   ],
   templateUrl: './recipe-item.html',
   styleUrl: './recipe-item.scss'
