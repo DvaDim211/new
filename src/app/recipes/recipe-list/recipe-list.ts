@@ -6,11 +6,13 @@ import {getRecipes} from '../../store';
 import {loadRecipes} from '../../store/actions/recipe.action';
 import {RecipeItem} from './recipe-item/recipe-item';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MatButton} from '@angular/material/button';
 
 @Component({
   selector: 'app-recipe-list',
   imports: [
-    RecipeItem
+    RecipeItem,
+    MatButton
 
   ],
   templateUrl: './recipe-list.html',

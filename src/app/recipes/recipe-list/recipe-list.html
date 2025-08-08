@@ -1,18 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <button class="btn btn-success" (click)="onNewRecipe()">New recipe</button>
-    </div>
+<div class="recipe-list-wrapper">
+  <div class="header">
+    <button mat-raised-button color="primary" (click)="onNewRecipe()">
+      New recipe
+    </button>
   </div>
-  @for (recipeItem of recipes; track recipeItem.id; let i = $index) {
-    <div class="row">
-      <div class="col-xs-12">
-        <app-recipe-item
-          [recipeItem]="recipeItem"
-          [index]="i"></app-recipe-item>
-      </div>
-    </div>
-  }
+
+  <div class="recipe-list">
+    @for (recipeItem of recipes; track recipeItem.id; let i = $index) {
+      <app-recipe-item
+        [recipeItem]="recipeItem"
+        [index]="i"
+
+      ></app-recipe-item>
+    }
+  </div>
 </div>
 
 

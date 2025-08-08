@@ -25,7 +25,8 @@ export const routes: Routes = [
         path: ':id/edit',
         component: RecipeEdit,
         data: { editMode: true },
-        resolve: { recipes: RecipesResolver},
+        resolve: { redirect: RecipesResolver },
+        runGuardsAndResolvers: 'always'
       },
     ],
   },

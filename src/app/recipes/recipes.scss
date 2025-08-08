@@ -1,0 +1,27 @@
+.recipe-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr; // левая колонка фиксированная, правая растягивается
+  gap: 1rem;
+  padding: 1rem;
+  height: calc(100vh - 64px); // если есть mat-toolbar сверху
+}
+
+.sidebar {
+  //background-color: #f9f9f9;
+  //border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.content {
+  overflow-y: auto;
+  overflow-x: auto;
+  min-width: 0;
+  border: 2px dashed red;
+  display: flex;
+}
+
+.content * {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
