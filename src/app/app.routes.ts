@@ -14,7 +14,10 @@ export const routes: Routes = [
     component: Recipes,
     children: [
       { path: '', component: RecipeStart },
-      { path: 'new', component: RecipeEdit },
+      { path: 'new',
+        component: RecipeEdit,
+        data: {editMode: false },
+      },
       {
         path: ':id',
         component: RecipeDetail,

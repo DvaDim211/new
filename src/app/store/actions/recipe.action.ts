@@ -27,3 +27,33 @@ export const addRecipeFailure = createAction(
   '[Recipe] Add RecipeService Failure',
   props<{ error: any }>()
 );
+
+export const updateRecipe = createAction(
+  '[Recipe] Update Recipe',
+  props<{ recipe: Recipe }>()
+);
+
+export const updateRecipeSuccess = createAction(
+  '[Recipe] Update Recipe Success',
+  props<{ recipe: Recipe }>()
+);
+
+export const updateRecipeFailure = createAction(
+  '[Recipe] Update Recipe Failure',
+  props<{ error: any }>()
+);
+
+export const deleteRecipe = createAction(
+  '[Recipe] Delete Recipe',
+  props<{ id: string }>()
+);
+
+export const deleteRecipeSuccess = createAction(
+  '[Recipe] Delete Recipe Success',
+  props<{ id: string }>()
+);
+
+export const deleteRecipeFailure = createAction(
+  '[Recipe] Delete Recipe Failure',
+  props<{ error: any }>()
+);

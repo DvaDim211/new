@@ -9,6 +9,7 @@ import { MatButton } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { AsyncPipe } from '@angular/common';
 import {toObservable} from '@angular/core/rxjs-interop';
+import {deleteRecipe} from '../../store/actions/recipe.action';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -73,8 +74,7 @@ export class RecipeDetail implements OnInit, OnChanges {
   }
 
   deleteRecipe() {
-    // this.recipeService.deleteRecipe(this.id);
-    // this.cancelAction();
+    this.store.dispatch(deleteRecipe({ id: this.id}))
   }
 
   addToSL() {

@@ -4,7 +4,7 @@ export interface Ingredient {
 }
 
 export interface Recipe {
-  id: number | string,
+  id?: number | string,
   name: string;
   description: string;
   imagePath: string;

@@ -3,10 +3,10 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   addRecipe,
   addRecipeFailure,
-  addRecipeSuccess,
+  addRecipeSuccess, deleteRecipe, deleteRecipeFailure, deleteRecipeSuccess,
   loadRecipes,
   loadRecipesFailure,
-  loadRecipesSuccess,
+  loadRecipesSuccess, updateRecipe, updateRecipeFailure, updateRecipeSuccess,
 } from '../actions/recipe.action';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 import { RecipeService } from '../../services/recipe.service';
@@ -41,4 +41,31 @@ export class RecipesEffects {
       ),
     ),
   );
+
+  updateRecipe$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateRecipe),
+      exhaustMap(({ recipe }) =>
+        this.recipesService.updateRecipe('https://ng-course-7a653-default-rtdb.firebaseio.com', recipe).pipe(
+          map(updated => updateRecipeSuccess({ recipe: updated })),
+          catchError(error => of(updateRecipeFailure({ error })))
+        )
+      )
+    )
+  );
+
+  deleteRecipe$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteRecipe),
+      exhaustMap(({ id }) =>
+        this.recipesService
+          .deleteRecipe('https://ng-course-7a653-default-rtdb.firebaseio.com', id)
+          .pipe(
+            map(() => deleteRecipeSuccess({ id })),
+            catchError((error) => of(deleteRecipeFailure({ error })))
+          )
+      )
+    )
+  );
+
 }

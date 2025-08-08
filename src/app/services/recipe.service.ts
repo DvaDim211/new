@@ -7,7 +7,7 @@ import {Recipe} from '../model/recipe.model';
 @Injectable({ providedIn: 'root' })
 export class RecipeService {
   private http = inject(HttpClient);
-  
+
 
   getRecipes(url: string): Observable<Recipe[]> {
     return this.http.get<{ [key: string]: Recipe }>(`${url}/recipes.json`).pipe(
@@ -28,4 +28,19 @@ export class RecipeService {
       .post<{ name: string }>(`${url}/recipes.json`, recipe)
       .pipe(map((resData) => ({ ...recipe, id: resData.name })));
   }
+
+  updateRecipe(url: string, recipe: Recipe): Observable<Recipe> {
+    return this.http
+      .put<Recipe>(`${url}/recipes/${recipe.id}.json`, recipe)
+      .pipe(
+        map((resData) => resData)
+      );
+  }
+
+  deleteRecipe(url: string, recipeId: string): Observable<void> {
+    return this.http
+      .delete<void>(`${url}/recipes/${recipeId}.json`)
+      .pipe(map(() => void 0));
+  }
+
 }

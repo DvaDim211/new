@@ -1,6 +1,12 @@
 import { createReducer, on} from '@ngrx/store';
 import {Recipe} from '../../model/recipe.model';
-import {addRecipeSuccess, loadRecipesFailure, loadRecipesSuccess} from '../actions/recipe.action';
+import {
+  addRecipeSuccess,
+  deleteRecipeSuccess,
+  loadRecipesFailure,
+  loadRecipesSuccess,
+  updateRecipeSuccess
+} from '../actions/recipe.action';
 
 const initialState: Recipe[] = [];
 
@@ -11,5 +17,11 @@ export const recipeReducer = createReducer(
     console.log(error);
     return state;
   }),
-  on(addRecipeSuccess, (state, {recipe}) => [...state, recipe])
+  on(addRecipeSuccess, (state, {recipe}) => [...state, recipe]),
+  on(updateRecipeSuccess, (state, { recipe }) =>
+    state.map(r => (r.id === recipe.id ? recipe : r))
+  ),
+  on(deleteRecipeSuccess, (state, { id }) =>
+    state.filter(recipe => recipe.id !== id)
+  ),
 );
